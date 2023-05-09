@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <include
+        android:id="@+id/main_toolbar"
+        layout="@layout/toolbar" />
+
+    <!--    START SCAN  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_startScanLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/main_toolbar">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/main_startScanButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:backgroundTint="@color/blue01"
+            android:fontFamily="@font/poppins_medium"
+            android:paddingHorizontal="50dp"
+            android:paddingVertical="15dp"
+            android:text="Start Scan"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--    SCANNING LAYOUT -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_scanningLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/main_toolbar">
+
+        <ProgressBar
+            android:id="@+id/main_progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/main_scanningText"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/main_scanningText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins"
+            android:text="Scanning, Please Wait..."
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            app:layout_constraintBottom_toBottomOf="@id/main_progressBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/main_progressBar"
+            app:layout_constraintTop_toTopOf="@id/main_progressBar" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_permissionsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/main_toolbar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="Location and Bluetooth Permission required"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--  DEVICE COUNT  -->
+    <TextView
+        android:id="@+id/main_devicesFoundTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Devices Found : "
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/main_devicesFound"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/main_devicesFound" />
+
+    <TextView
+        android:id="@+id/main_devicesFound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/poppins"
+        android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@id/main_devicesFoundTitle"
+        app:layout_constraintTop_toBottomOf="@id/guideline" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/main_divI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/main_devicesFound" />
+
+    <!--    RECYCLER VIEW   -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/main_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_divI"
+        tools:listitem="@layout/recycler_scan_items" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
