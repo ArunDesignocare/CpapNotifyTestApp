@@ -10,105 +10,296 @@
         android:id="@+id/connect_toolbar"
         layout="@layout/toolbar" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/rounded_stroke"
-        android:paddingHorizontal="10dp"
-        android:paddingVertical="20dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/connect_toolbar">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/connect_deviceImage"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_bluetooth_searching_24" />
-
-        <!--    DEVICE NAME-->
-        <TextView
-            android:id="@+id/connect_deviceName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/poppins"
-            android:text="Device Name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            app:layout_constraintBottom_toTopOf="@+id/connect_deviceAddress"
-            app:layout_constraintStart_toEndOf="@id/connect_deviceImage"
-            app:layout_constraintTop_toTopOf="@id/connect_deviceImage"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <!--    DEVICE ADDRESS-->
-        <TextView
-            android:id="@+id/connect_deviceAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/poppins_light"
-            android:text="Device Address"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            app:layout_constraintBottom_toBottomOf="@id/connect_deviceImage"
-            app:layout_constraintStart_toEndOf="@id/connect_deviceImage"
-            app:layout_constraintTop_toBottomOf="@+id/connect_deviceName" />
-
-        <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/connect_divI"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@id/connect_deviceImage" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/connect_connectStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/text_accepted"
-            android:fontFamily="@font/poppins"
-            android:paddingHorizontal="30dp"
-            android:paddingVertical="10dp"
-            android:text="Connecting..."
-            android:textColor="@color/white"
-            app:layout_constraintStart_toEndOf="@id/connect_connectStatusTitle"
-            app:layout_constraintTop_toBottomOf="@id/connect_divI" />
+            <!--  DEVICE STATUS  -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/connect_deviceLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/rounded_stroke"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="20dp"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/connect_reconnectButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="0dp"
-            android:visibility="gone"
-            app:icon="@drawable/ic_baseline_refresh_24"
-            app:iconGravity="textStart"
-            app:iconPadding="0dp"
-            app:iconTint="@color/white"
-            app:layout_constraintBottom_toBottomOf="@id/connect_connectStatus"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/connect_connectStatus"
-            app:layout_constraintTop_toTopOf="@id/connect_connectStatus" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/connect_deviceImage"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_bluetooth_searching_24" />
 
-        <TextView
-            android:id="@+id/connect_connectStatusTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Status : "
-            app:layout_constraintBottom_toBottomOf="@id/connect_connectStatus"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/connect_connectStatus" />
+                <!--    DEVICE NAME-->
+                <TextView
+                    android:id="@+id/connect_deviceName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Device Name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    app:layout_constraintBottom_toTopOf="@+id/connect_deviceAddress"
+                    app:layout_constraintStart_toEndOf="@id/connect_deviceImage"
+                    app:layout_constraintTop_toTopOf="@id/connect_deviceImage"
+                    app:layout_constraintVertical_chainStyle="packed" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+                <!--    DEVICE ADDRESS-->
+                <TextView
+                    android:id="@+id/connect_deviceAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="Device Address"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    app:layout_constraintBottom_toBottomOf="@id/connect_deviceImage"
+                    app:layout_constraintStart_toEndOf="@id/connect_deviceImage"
+                    app:layout_constraintTop_toBottomOf="@+id/connect_deviceName" />
 
-            app:layout_constraintGuide_percent="0.3" />
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/connect_divI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@id/connect_deviceImage" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/connect_connectStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/text_accepted"
+                    android:fontFamily="@font/poppins"
+                    android:paddingHorizontal="30dp"
+                    android:paddingVertical="10dp"
+                    android:text="Connecting..."
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toEndOf="@id/connect_connectStatusTitle"
+                    app:layout_constraintTop_toBottomOf="@id/connect_divI" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/connect_reconnectButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="0dp"
+                    android:visibility="gone"
+                    app:icon="@drawable/ic_baseline_refresh_24"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconTint="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/connect_connectStatus"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/connect_connectStatus"
+                    app:layout_constraintTop_toTopOf="@id/connect_connectStatus" />
+
+                <TextView
+                    android:id="@+id/connect_connectStatusTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Status : "
+                    app:layout_constraintBottom_toBottomOf="@id/connect_connectStatus"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/connect_connectStatus" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                    app:layout_constraintGuide_percent="0.3" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/connect_notifyButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/blue01"
+                android:fontFamily="@font/poppins"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="8dp"
+                android:text="Start Notify"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/connect_deviceLayout" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/connect_shareButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/blue01"
+                android:fontFamily="@font/poppins"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="8dp"
+                android:text="Share Data"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/connect_deviceLayout" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/connect_deleteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/rejected"
+                android:fontFamily="@font/poppins"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="8dp"
+                android:text="Delete Data"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                app:layout_constraintEnd_toStartOf="@id/connect_shareButton"
+                app:layout_constraintTop_toBottomOf="@id/connect_deviceLayout" />
+            <!--FLOW RATE CHART -->
+            <!--  DIV II  -->
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/connect_divII"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/connect_deleteButton" />
+
+            <TextView
+                android:id="@+id/connect_flowRate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Flow Rate vs Time"
+                android:textColor="@color/blue01"
+                app:layout_constraintTop_toBottomOf="@id/connect_divII" />
+            <!--     FLOW RATE VALUE       -->
+            <TextView
+                android:id="@+id/connec_flowRateValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text=""
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@id/connect_flowUnit"
+                app:layout_constraintTop_toBottomOf="@id/connect_divII" />
+
+            <!--     PRESSURE UNIT       -->
+            <TextView
+                android:id="@+id/connect_flowUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/poppins"
+                android:text="L/min"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/connec_flowRateValue"
+                app:layout_constraintBottom_toBottomOf="@id/connec_flowRateValue"/>
+
+            <!--  CHART   -->
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/connect_graph_flowRate"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="20sp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/connect_flowRate" />
+            <!--     PRESSURE CHART       -->
+            <!--      DIV III      -->
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/connect_divIII"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/connect_graph_flowRate" />
+
+            <TextView
+                android:id="@+id/connect_presure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Pressure vs Time"
+                android:textColor="@color/blue01"
+                app:layout_constraintTop_toBottomOf="@id/connect_divIII" />
+
+            <!--     PRESSURE VALUE       -->
+            <TextView
+                android:id="@+id/connect_pressureValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text=""
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@id/connect_pressureUnit"
+                app:layout_constraintTop_toBottomOf="@id/connect_divIII" />
+
+            <!--     PRESSURE UNIT       -->
+            <TextView
+                android:id="@+id/connect_pressureUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/poppins"
+                android:text="cmH20"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/connect_pressureValue"
+                app:layout_constraintBottom_toBottomOf="@id/connect_pressureValue"/>
+
+            <!--  CHART   -->
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/connect_graph_pressure"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="20sp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/connect_presure" />
+
+
+            <!--     INHALATION EXHALATION  -->
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/connect_divIV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/connect_graph_pressure" />
+
+            <TextView
+                android:id="@+id/connect_io"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ihalation &amp; Exhalation vs Time"
+                app:layout_constraintTop_toBottomOf="@id/connect_divIV" />
+
+            <!--  CHART   -->
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/connect_graph_io"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="20sp"
+                app:layout_constraintTop_toBottomOf="@id/connect_io" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
